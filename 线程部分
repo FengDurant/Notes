@@ -61,6 +61,8 @@ public class TickDemo
   实现方式和继承方式有何区别？？？
   实现方式的好处：避免了单继承的方式
   
+  继承Thread：线程代码存放在Thread自雷的run方法中
+  实现Runnable：线程代码存放在接口的子类的run方法中。
   
   
   
