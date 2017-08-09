@@ -14,6 +14,61 @@ CPU做快速切换，已达到看上去同时运行的效果。形象的吧多�
 1.继承Thread类      步骤：1. 定义类继承Thread。  2. 复写Thread类中的run方法  目的：将自定义的方法存储在run方法中   3.调用线程中的start方法 （有两个作用启动线程，调用run方法）
 
 为什么使用run方法？？？？   用于存储线程要运行的代码，该存储功能就是run方法， 
+线程有独立的一块内存区域。
 
-
+currentThread():获取当前线程对象
+getName():获取线程名称
                           
+简单的买票程序：多窗口卖票  卖票代码被多个线程执行
+设置static变量，大家共同使用
+class Ticket extends Thread
+{
+	private static int tick = 100;
+	public void run()
+	{
+		while(true)
+		{
+			if(tick > 0)
+			{
+			System.out.println(Thread.currentThread().getName() + "sale:" + tick--);
+			}
+		}
+	}
+}
+public class TickDemo
+{
+	public static void main(String[] args)
+	{
+		Ticket t1 = new Ticket();
+		Ticket t2 = new Ticket();
+		Ticket t3 = new Ticket();
+		Ticket t4 = new Ticket();
+		
+		t1.start();
+		t2.start();
+		t3.start();
+		t4.start();
+	}
+}
+
+但也存在弊端
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
