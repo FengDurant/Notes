@@ -910,7 +910,115 @@ public class DrawIcon implements Icon {
 
 }*/
   
-  
+ /*
+ * 集合框架
+ * 为什么出现这么多的容器？    因为，每一个容器对数据的存储方式都有不同， 这个存储方式称之为： 数据结构
+ * 1. add方法的参数类型是object，以便接收任意类型的对象。
+ * 2. 集合中存储的都是对象的引用（地址）
+ * 
+ * 什么事迭代器？？  其实就是集合取出元素的方式。
+ * 
+ * 就把取出方式定义在集合的内部。这样取出方式就可以直接访问集合内容的元素。
+ * 那么取出的方式被定义内部类，而每一个容器的数据结构不同，所以取出的动作细节不同，
+ * 但是有共性内容   判断和取出  ，那么将写共性抽取
+ * 
+ * 那么这些内部类都符合一个规则。该规则是Iterator，如何获取集合的取出对象呢？
+ * 通过一个对外提供的方法，iterator();
+ * 
+ * Collection
+ *   --List 元素有序，元素可以重复。因为该集合体系有索引。
+ *     --ArrayList:底层的数据结构使用的是数组结构，特点：查询速度快，但是增删稍慢
+ *     --LinkedList:底层使用的是链表数据结构，依次往下问。查询速度慢，增删速度快
+ *     --Vector:
+ *   --Set  
+ *   
+ *   List： 特有的方法， 凡是可以操作交表的方法是该体系特有的方法。 
+ *   增： add(index, element), addAll(index, Collection);
+ *   删： remove(index);
+ *   改：set(index, element)
+ *   查：get(index); subList(from, to);listIterator();
+ *   
+ *   List集合特有的迭代器，ListIterator是Iterator的子接口，在迭代时，不可以通过集合对象的方法操作集合中
+ *   的元素，所以在迭代时，只能用迭代器的方法操作元素，可是Iterator方法有限，只能对元素进行判断，取出，删除的操作
+ *   如果想要其他操作如添加，修改等，就需要是要其子接口ListIterator，
+ *   该接口只能通过List集合的ListIterator方法获取。
+ *   
+ * 
+ */
+
+import java.util.*;
+public class Xue {
+	
+	public static void method_get()
+	{
+		ArrayList a1 = new ArrayList();
+		//添加元素
+		a1.add("java01");
+		a1.add("java02");
+		a1.add("java03");
+		sop(a1);
+		//指定位置添加元素
+//		a1.add(1,"java09");
+//		sop(a1);
+		
+		//删除指定位置的元素
+//		a1.remove(2);
+		
+		//修改元素
+//		a1.set(2, "java07");
+		
+		for (int x = 0; x < a1.size(); x++)
+		{
+			sop("a1("+ x + ") = " + a1.get(x));
+		}
+		
+		Iterator it = a1.iterator();
+		while(it.hasNext())
+		{
+			sop("next = " + it.next());
+		}
+		sop(a1);
+	}
+	
+	public static void main(String[] args)
+	{
+		//演示列表迭代器 
+		ArrayList a1 = new ArrayList();
+		//添加元素
+		a1.add("java01");
+		a1.add("java02");
+		a1.add("java03");
+		
+		
+		
+		
+		ListIterator li = a1.listIterator();
+		while(li.hasNext())
+		{
+			Object obj = li.next();
+			if(obj.equals("java02"))
+				li.add("java08");
+		}
+		while(li.hasPrevious())
+		{
+			Object obj = li.previous();
+			if(obj.equals("java02"))
+				li.add("java08");
+		}
+		
+		sop(a1);
+		
+//		Iterator it = a1.iterator();
+//		while(it.hasNext())
+//		{
+//			Object obj = it.next();
+//			if(obj.equals("java02"))
+//				a1.add("java08");
+//			sop("obj = " + obj);
+//		}
+		
+		
+	}
   
   
   
