@@ -244,7 +244,25 @@ public class StringBufferDemo
 	}
 }
   
-  
+ /*
+ * StringBuilder是线程不同步
+ * StringBuffer是线程同步
+ * 以后开发建议使用Stringbuilder
+ */
+
+/*
+ * 基本数据类型对象包装类
+ * byte    Byte
+ * short   Short
+ * int     Integer等等
+ * 最常见作用
+ * 就是用于基本数据类型和字符串类型之间做转换
+ * 
+ * 基本数据类型转成字符串 ： 接班数据类型+""     ,    toString
+ * 字符串转为基本数据类型
+ */
+
+
   
   
   
