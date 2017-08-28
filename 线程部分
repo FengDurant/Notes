@@ -144,7 +144,62 @@ Java队多线程的安全提供了专业的解决方案。  就是同步代码�
   
   懒汉式与饿汉时有何不同？？？？？？？？？
   
-  
+  //equals 判断内容是否相同
+//equalsIgnoreCase 判断内容是否相同，并湖绿大小写
+/*
+ * 字符转换
+ * 3.1 将字符数组转为字符串。
+ * 构造函数 String(char[])
+ *        String(char[], offset, count);将字符串数组中一部分转为字符串
+ *        静态方法： static String copyValueof(char[])
+ * 3.2 将字符串转为字符数组。
+ * char[] toCharArrary();
+ * 3.3 将字节数组转为字符串。
+ *     String(Byte[]);
+ * 3.4 将字符串转为字节数组。
+ *     Byte[] getBytes();
+ *     
+ *4. 替换 String replace(oldchar, newchar);
+ *   如果替换的字符不存在，返回原来的字符串
+ *
+ *5. 切割 String split(regex)
+ *     
+ *     
+ */
+public class Xuetest
+{
+	public static void methed_split()
+	{
+		String s = "zhangsan,lisi,wangwu,zhaoliu";
+		String[] arr = s.split(",");
+		System.out.println(arr[2]);
+	}
+	
+	public static void sop(String str)
+	{
+		System.out.println(str);
+	}
+	
+	public  static String myTrim(String str)
+	{
+		int start = 0, end = str.length()-1;
+		while(start <= end && str.charAt(start) == ' ')
+			start++;
+		while (start <= end && str.charAt(end) == ' ')
+			end--;
+		return str.substring(start, end+1);
+	}
+	
+	public static void main(String args[])
+	{
+		//methed_split();
+		String s = "         123 789jjjj      ";
+		sop(myTrim(s));
+	}
+}
+
+
+
   
   
   
