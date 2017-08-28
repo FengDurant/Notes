@@ -199,7 +199,50 @@ public class Xuetest
 }
 
 
+/*
+ * StringBuffer是字符串缓冲区，是一个容器
+ *       1. 存储
+ *         StringBuffer append():将指定数据作为参数添加到该已有数据的结尾处
+ *         StringBuffer insert(index, 数据)
+ *       2. 删除
+ *         Stringbuffer delete(start, end) 包头不包尾
+ *         StringBuffer deleteChatAt(index):删除指定位置的字符
+ *       3. 获取
+ *         char charAt(int index)
+ *         int indexof(String str)
+ *         int lastindexof)string str)
+ *         int length();
+ *         String substring(int start, int end)
+ * 
+ *       4. 修改
+ *         StringBuffer replace(start, end, string);
+ *         void setCharAt(int index, char ch);
+ *         
+ *       5. 反转
+ *         StringBuffer reverse()
+ *         
+ *       6. 
+ *       
+ */
+public class StringBufferDemo
+{
+	public static void main(String args[])
+	{
+		StringBuffer sb = new StringBuffer("woaini");
+//		StringBuffer sb1 = sb.append(34);
+//		sb.delete(1, 2);  //
+//		sb.delete(0, sb.length()); //清空缓冲区
+		
+//		sop("sb==sb1"+(sb==sb1));
+		sop(sb.toString());
 
+	}
+	
+	public static void sop(String str)
+	{
+		System.out.println(str);
+	}
+}
   
   
   
