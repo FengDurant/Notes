@@ -1021,7 +1021,59 @@ public class Xue {
 	}
   
   
-  
+  /*
+ * 使用LinkedList模拟一个堆栈或队列数据结构；
+ * 堆栈：先进后出
+ * 队列：先进先出，如同一个水管
+ */
+
+class DuiLie
+{
+	private LinkedList link;
+	
+	DuiLie()
+	{
+		link = new LinkedList();
+	}
+	
+	public void myAdd(Object obj)
+	{
+		link.addFirst(obj);
+	}
+	
+	public Object myGet()
+	{
+		return link.removeLast();
+	}
+	public boolean isNull()
+	{
+		return link.isEmpty();
+	}
+	
+}
+
+public class LinkedListTest
+{
+	public static void main(String[] args)
+	{
+		DuiLie dl = new DuiLie();
+		dl.myAdd("java01");
+		dl.myAdd("java02");
+		dl.myAdd("java03");
+		dl.myAdd("java04");
+		dl.myAdd("java05");
+		while(!dl.isNull())
+		{
+			sop(dl.myGet());
+		}
+	}
+	
+	public static void sop(Object obj)
+	{
+		System.out.println(obj);
+	}
+}
+
   
   
 
