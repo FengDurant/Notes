@@ -1077,7 +1077,52 @@ public class LinkedListTest
   
   
 
-
+/*
+ * 去除ArrayListTest集合中重复的元素
+ * 
+ * 
+ * 
+ */
+public class ArrayListTest
+{
+	public static void main(String[] args)
+	{
+		ArrayList a11 = new ArrayList();
+		a11.add("java001");
+		a11.add("java002");
+		a11.add("java001");
+		a11.add("java002");
+		a11.add("java001");
+		a11.add("java003");
+		
+		sop(a11);
+		a11 = SingleElement(a11);
+		sop(a11);
+	}
+	
+	public static void sop(Object obj)
+	{
+		System.out.println(obj);
+	}
+	
+	public static ArrayList SingleElement(ArrayList al)
+	{
+		//定义一个临时容器
+		ArrayList newAl = new ArrayList();
+		Iterator it = al.iterator();
+		while(it.hasNext())
+		{
+			Object obj = it.next();
+			
+			if(!newAl.contains(obj))
+			{
+				newAl.add(obj);
+			}			
+		}
+		return newAl;
+		
+	}
+}
 
 
 
