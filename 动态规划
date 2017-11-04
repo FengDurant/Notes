@@ -1,0 +1,78 @@
+/*矩阵连乘问题*/
+#include<stdio.h>
+#include<string.h>
+#define MaxNum 1000
+long MatrixChain(int);
+int dim[MaxNum];
+long memoTable[MaxNum][MaxNum];
+int bestK[MaxNum][MaxNum];
+int main()
+{
+	int i, matrixNum;
+	while(scanf("%d", &matrixNum) != EOF)
+	{
+		for(i=0; i<=matrixNum; i++)
+			scanf("%d", &dim[i]);
+		printf("%d\n", MatrixChain(matrixNum));
+	}
+	return 0;
+}
+
+long MatrixChain(int matrixNum)
+{
+	int i, j, len, k;
+	for(i=1; i<=matrixNum; i++)
+	{
+		memoTable[i][i]=0;
+	}
+	for(len=2; len<=matrixNum; len++)
+	{
+		for(i=1; i<=matrixNum-len+1; i++)
+		{
+			j=i+len-1;
+			memoTable[i][j]=1000000;
+			for(k=i; k<j; k++)
+			{
+				long ans=memoTable[i][k] + memoTable[k+1][j]+dim[i-1]*dim[k]*dim[j];
+				if(ans<memoTable[i][j])
+				{
+					bestK[i][j]=k;
+					memoTable[i][j]=ans;
+				}
+			}
+		}
+	}
+	return memoTable[1][matrixNum];
+}
+
+long MatrixChainMemo(int i, int j)
+{
+	if(memoTable[i][j] != -1)
+		return memoTable[i][j];
+	if(i == j)
+	{
+		memoTable[i][j]=0;
+		return 0;
+	}
+	long ans, max=1000000;
+	int k;
+	for(int k=i; k<j; k++)
+	{
+		ans=memoTable[i][k] + memoTable[k+1][j]+dim[i-1]*dim[k]*dim[j];
+		if(ans<max)
+		{
+			bestK[i][j]=k;
+			max=ans;
+		}
+	}
+	memoTable[i][j]=max;
+	return max;
+}
+
+
+
+
+
+
+
+
