@@ -39,3 +39,54 @@ int main()
 	}
 	return 0;
 }
+
+
+小数背包问题：
+#include<stdio.h>
+#include<algoruthm>
+#define MaxItems 1000
+struct item{
+	int weight;
+	int value;
+	bool operator<(const item& bb)const{
+		return value/(1.0*weight)>(1.0*bb.value)/bb.weight;
+	}
+
+};//定义物品结构体
+
+double greedyKnapsack(int n, int c, item *itemSet)
+{
+	double temp=0;
+	int i;
+	sort(itemSet, itemSet+n);
+	for(i=0; i<n; i++)
+	{
+		if(c >=itemSet[i].weight)
+		{
+			temp+=itemSet[i].value;
+			c-=itemSet[i].weight;
+		}else
+		{
+			temp+=c*(itemSet[i].value*1.0)/itemSet[i].weight;
+			break;
+		}
+	}
+	return temp;
+}
+
+int main()
+{
+	int i, n, c;
+	item itemSet[MaxItems];
+	double temp;
+	while(scanf("%d%d", &n, &c) != EOF)
+	{
+		for(i=0; i<n; i++)
+			scanf("%d",&(itemSet[i].weight));
+		for(i=0; i<n; i++)
+			scanf("%d",&(itemSet[i].value));
+		temp = greedyKnapsack(n, c, itemSet);
+		printf("%.0f\n", temp);
+	}
+	return 0;
+}
